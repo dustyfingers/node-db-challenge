@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json({ extended: false }));
 
 // sanity route
-app.get('/', (req, res) => { res.send('API RUNNING!') });
+app.get('/', (req, res) => { res.status(200).json({ api: 'API RUNNING!'}) });
 
 // Define routes
 app.use('/projects', require('./routes/projects'));
@@ -17,3 +17,5 @@ app.use('/tasks', require('./routes/tasks'));
 // port init & have app listen
 const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+module.exports = app;
